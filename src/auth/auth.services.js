@@ -13,6 +13,7 @@ const postLogin = (req, res) => {
                         //inf que se encrypta en el token
                         // se le pasa palabra secreta
                         id: data.id,
+                        username: data.username,
                         role: data.role
                     }, jwtSecret)
 

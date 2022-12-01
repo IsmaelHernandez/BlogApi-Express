@@ -5,8 +5,8 @@ const { comparePassword } = require('../utils/crypto')
 const checkUserCredential = async (email, password) => {
     try {
         const user = await findUserByEmail(email)
-        const verifiPass = comparePassword(password, users.password)
-        if(verifiPass){
+        const verifyPassword = comparePassword(password, user.password)
+        if(verifyPassword){
             return user
         }
         return null

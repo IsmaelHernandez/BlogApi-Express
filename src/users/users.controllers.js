@@ -23,6 +23,7 @@ const createUser = async (obj) => {
         id: uuid.v4(),
         first_name: obj.first_name,
         last_name: obj.last_name,
+        username: obj.username,
         email: obj.email,
         password: hashPassword(obj.password),
         age: obj.age,

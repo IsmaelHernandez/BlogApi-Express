@@ -28,8 +28,8 @@ const getUsersById = (req, res) => {
 }
 
 const postUsers = (req, res) => {
-    const {first_name, last_name, email, password, age, country} = req.body
-        UsersControllers.createUser({first_name, last_name, email, password, age, country})
+    const {first_name, last_name, username, email, password, age, country} = req.body
+        UsersControllers.createUser({first_name, last_name, username, email, password, age, country})
             .then((response) => {
                 res.status(201).json(response)
             })

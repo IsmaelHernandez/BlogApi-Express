@@ -7,12 +7,12 @@ const Users = db.define('users', {
         type: DataTypes.UUID,
         primaryKey: true
     },
-    firstName: {
+    first_name: {
         type: DataTypes.STRING,
         allowNull: false,
         field: 'first_name'
     },
-    lastName: {
+    last_name: {
         type: DataTypes.STRING,
         allowNull: false,
         field: 'last_name'
@@ -39,7 +39,7 @@ const Users = db.define('users', {
 
     },
     country: {
-        type: DataTypes.STRING(3)
+        type: DataTypes.STRING
     }
 
 })

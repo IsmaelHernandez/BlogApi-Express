@@ -18,7 +18,7 @@ const findUserById = async (id) => {
 
 const createUser = async (obj) => {
     const data = await Users.create({
-        id: uuid.v5(),
+        id: uuid.v4(),
         first_name: obj.first_name,
         last_name: obj.last_name,
         email: obj.email,
@@ -34,5 +34,5 @@ const createUser = async (obj) => {
 module.exports = {
     findAllUsers,
     findUserById,
-    createUser
+    createUser,
 }

@@ -28,18 +28,14 @@ const getUsersById = (req, res) => {
 }
 
 const postUsers = (req, res) => {
-    const data = req.body
-    if(data.first_name && data.last_name && data.email && data.password && data.age && data.country){
-        UsersControllers.findUserById(data)
-            .then(response => {
-                res.status(200).json(response)
+    const {first_name, last_name, email, password, age, country} = req.body
+        UsersControllers.createUser({first_name, last_name, email, password, age, country})
+            .then((response) => {
+                res.status(201).json(response)
             })
-            .catch(err => {
-                res.status(400).json({message: err.message})
+            .catch((err) => {
+                res.status(400).json({ message: err.message})
             })
-    }else{
-        res.status(400).json({message: 'Missing Data'})
-    }
 }
 
 

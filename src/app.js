@@ -1,7 +1,11 @@
 const express = require('express')
 const app = express()
+
 const port = require('../config').api.port
+
 const usersRouter = require('./users/users.router')
+const authRouter = require('./auth/auth.router')
+
 const db = require('./utils/database')
 
 //? Para ver si se hizo bien la autenticacion de la BD
@@ -21,6 +25,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1/users', usersRouter)
+app.use('/api/v1/auth', authRouter)
 
 app.listen(port, () => {
     console.log(`Started app listening on port ${port}`)

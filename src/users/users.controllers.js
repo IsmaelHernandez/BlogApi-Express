@@ -43,12 +43,23 @@ const findUserByEmail = async (email) => {
     return data
 }
 
-// const patchUser = async(id) => {
-//     const id = req.Use
-// }
 
-const deleteUsers = async() => {
+const updateUsers = async (id, obj) => {
+    const data = await Users.update(obj, {
+        where: {
+            id
+        }
+    })
+    return data
+}
 
+const deleteUsers = async (id) => {
+    const data = await Users.destroy({
+        where: {
+            id: id
+        }
+    })
+    return data
 }
 
 
@@ -57,4 +68,6 @@ module.exports = {
     findUserById,
     createUser,
     findUserByEmail,
+    updateUsers,
+    deleteUsers,
 }

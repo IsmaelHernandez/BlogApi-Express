@@ -6,9 +6,15 @@ const passportJWT = require('../middleware/auth.middleware')
 
 
 router.get("/", passportJWT.authenticate('jwt', {session: false}),  servicesUsers.getAllUsers)
-router.get("/:id", servicesUsers.getUsersById)
 router.post("/", servicesUsers.postUsers)
+
 router.get("/me", passportJWT.authenticate('jwt', {session: false}), servicesUsers.getMyUser)
+router.patch("/me", passportJWT.authenticate('jwt', {session: false}), servicesUsers.patchMyUser)
+
+router.get("/:id", servicesUsers.getUsersById)
+router.patch("/:id", servicesUsers.patchUser)
+router.delete("/:id", servicesUsers.deleteUsers)
+
 
 
 

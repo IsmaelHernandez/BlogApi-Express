@@ -7,6 +7,7 @@ const usersRouter = require('./users/users.router')
 const authRouter = require('./auth/auth.router')
 
 const db = require('./utils/database')
+const initModels = require('./models/initModels')
 
 //? Para ver si se hizo bien la autenticacion de la BD
 db.authenticate()
@@ -17,6 +18,8 @@ db.authenticate()
 db.sync()
     .then(() => console.log('Database synced'))
     .catch((err) => console.log(err))
+
+initModels()
 
 app.use(express.json())
 

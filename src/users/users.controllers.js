@@ -43,6 +43,14 @@ const findUserByEmail = async (email) => {
     return data
 }
 
+// const patchUser = async(id) => {
+//     const id = req.Use
+// }
+
+const deleteUsers = async() => {
+
+}
+
 
 module.exports = {
     findAllUsers,

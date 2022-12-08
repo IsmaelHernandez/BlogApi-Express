@@ -10,6 +10,7 @@ router.post("/", servicesUsers.postUsers)
 
 router.get("/me", passportJWT.authenticate('jwt', {session: false}), servicesUsers.getMyUser)
 router.patch("/me", passportJWT.authenticate('jwt', {session: false}), servicesUsers.patchMyUser)
+router.delete("/me", passportJWT.authenticate('jwt', {session: false}), servicesUsers.deleteMyUsers)
 
 router.get("/:id", servicesUsers.getUsersById)
 router.patch("/:id", servicesUsers.patchUser)

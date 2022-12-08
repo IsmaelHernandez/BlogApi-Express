@@ -54,9 +54,9 @@ const getMyUser = (req, res) => {
 
 const patchUser = (req, res) => {
     const id = req.params.id
-    const { first_name, last_name, user_name, age, country } = req.body
+    const { first_name, last_name, username, age, country } = req.body
 
-    userControllers.updateUser(id, { first_name, last_name, user_name, age, country })
+    UsersControllers.updateUsers(id, { first_name, last_name, username, age, country })
         .then((data) => {
             if (data) {
                 res.status(200).json({ message: 'User Modified Succesfully' })
@@ -72,7 +72,7 @@ const patchUser = (req, res) => {
 const patchMyUser = (req, res) => {
     const id = req.user.id
     const { first_name, last_name, country, age, user_name } = req.body
-    userControllers.updateUser(id, { first_name, last_name, country, age, user_name })
+    UsersControllers.updateUser(id, { first_name, last_name, country, age, user_name })
         .then(() => {
             res.status(200).json({ message: 'Your user was modified succesfully' })
         })
@@ -83,15 +83,30 @@ const patchMyUser = (req, res) => {
 
 
 const deleteUsers = (req, res) => {
-    const id = req.user.id
-    userControllers.deleteUsers(id)
+    const id = req.params.id;
+    UsersControllers.deleteUsers(id)
         .then((data) => {
-            res.status(204).json({ message: 'You User elimined Succesfully' })
+            if(data){
+                res.status(200).json({message: 'User Deleted Succesfully'})
+            } else {
+                res.status(404).json({message: 'Invalid ID'})
+            }
         })
         .catch((err) => {
-            res.status(400).json({ message: err.message })
+            res.status(400).json({message: err.message})
         })
 }
+
+const deleteMyUsers = (req, res) => {
+    const id = req.user.id
+    UsersControllers.deleteUsers(id)
+        .then((data) => {
+            res.status(204).json()
+        })
+        .catch((err) => {
+            res.status(400).json({message: err.message})
+        })
+} 
 
 
 
@@ -103,4 +118,5 @@ module.exports = {
     patchUser,
     patchMyUser,
     deleteUsers,
+    deleteMyUsers,
 }

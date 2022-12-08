@@ -5,6 +5,7 @@ const port = require('../config').api.port
 
 const usersRouter = require('./users/users.router')
 const authRouter = require('./auth/auth.router')
+const postsRouter = require('./posts/posts.router')
 
 const db = require('./utils/database')
 const initModels = require('./models/initModels')
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/users', usersRouter)
 app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/posts', postsRouter)
 
 app.listen(port, () => {
     console.log(`Started app listening on port ${port}`)
